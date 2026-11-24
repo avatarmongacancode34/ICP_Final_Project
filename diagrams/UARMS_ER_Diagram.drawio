@@ -1,0 +1,244 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="uarms-er" name="UARMS ER Diagram">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Legend and constraint notes -->
+        <mxCell id="legend" value="&lt;b&gt;UARMS - ER Diagram&lt;/b&gt;&lt;br&gt;Crow's foot notation&lt;br&gt;Bar = exactly one&lt;br&gt;Circle + bar = zero or one&lt;br&gt;Circle + crow's foot = zero or many&lt;br&gt;[PK] primary key, [FK] foreign key&lt;br&gt;Edge label = foreign key column" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="190" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="notes" value="&lt;b&gt;Planned constraints&lt;/b&gt;&lt;br&gt;enrollment.course_id: ON DELETE RESTRICT&lt;br&gt;UNIQUE (student_id, course_id, semester_id) on enrollment&lt;br&gt;UNIQUE (enrollment_id) on grade&lt;br&gt;UNIQUE username, email on person&lt;br&gt;Indexes: enrollment student_id, course_id, semester_id&lt;br&gt;department.head_of_department_id: nullable, FK added with ALTER TABLE" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="260" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ TABLES ============ -->
+
+        <mxCell id="person" value="person" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="250" height="347" as="geometry"/>
+        </mxCell>
+        <mxCell id="person_a" value="person_id: INT [PK]&lt;br&gt;title: VARCHAR&lt;br&gt;first_name: VARCHAR&lt;br&gt;middle_name: VARCHAR&lt;br&gt;last_name: VARCHAR&lt;br&gt;date_of_birth: DATE&lt;br&gt;gender: VARCHAR&lt;br&gt;nationality: VARCHAR&lt;br&gt;email: VARCHAR&lt;br&gt;phone: VARCHAR&lt;br&gt;street_address: VARCHAR&lt;br&gt;digital_address: VARCHAR&lt;br&gt;city: VARCHAR&lt;br&gt;region: VARCHAR&lt;br&gt;country: VARCHAR&lt;br&gt;emergency_contact_name: VARCHAR&lt;br&gt;emergency_contact_phone: VARCHAR&lt;br&gt;username: VARCHAR&lt;br&gt;password_hash: VARCHAR&lt;br&gt;user_role: VARCHAR&lt;br&gt;account_status: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="person">
+          <mxGeometry y="26" width="250" height="321" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="program" value="program" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="40" width="250" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="program_a" value="program_id: INT [PK]&lt;br&gt;department_id: INT [FK]&lt;br&gt;program_name: VARCHAR&lt;br&gt;program_code: VARCHAR&lt;br&gt;degree_type: VARCHAR&lt;br&gt;duration_years: INT&lt;br&gt;total_credits_required: INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="program">
+          <mxGeometry y="26" width="250" height="111" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="student" value="student" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="450" width="250" height="227" as="geometry"/>
+        </mxCell>
+        <mxCell id="student_a" value="student_id: INT [PK]&lt;br&gt;person_id: INT [FK]&lt;br&gt;program_id: INT [FK]&lt;br&gt;admission_date: DATE&lt;br&gt;expected_graduation_year: INT&lt;br&gt;academic_level: VARCHAR&lt;br&gt;enrollment_status: VARCHAR&lt;br&gt;previous_school: VARCHAR&lt;br&gt;entry_qualification: VARCHAR&lt;br&gt;guardian_name: VARCHAR&lt;br&gt;guardian_phone: VARCHAR&lt;br&gt;financial_aid_status: VARCHAR&lt;br&gt;cgpa: DECIMAL" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="student">
+          <mxGeometry y="26" width="250" height="201" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="enr" value="enrollment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="340" y="450" width="250" height="122" as="geometry"/>
+        </mxCell>
+        <mxCell id="enr_a" value="enrollment_id: INT [PK]&lt;br&gt;student_id: INT [FK]&lt;br&gt;course_id: INT [FK]&lt;br&gt;semester_id: INT [FK]&lt;br&gt;enrollment_date: DATE&lt;br&gt;enrollment_status: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="enr">
+          <mxGeometry y="26" width="250" height="96" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="faculty" value="faculty" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="640" y="450" width="250" height="227" as="geometry"/>
+        </mxCell>
+        <mxCell id="faculty_a" value="faculty_id: INT [PK]&lt;br&gt;person_id: INT [FK]&lt;br&gt;department_id: INT [FK]&lt;br&gt;academic_rank: VARCHAR&lt;br&gt;specialization: VARCHAR&lt;br&gt;employment_type: VARCHAR&lt;br&gt;employment_date: DATE&lt;br&gt;date_available: DATE&lt;br&gt;years_of_experience: INT&lt;br&gt;highest_education: VARCHAR&lt;br&gt;university_attended: VARCHAR&lt;br&gt;office_location: VARCHAR&lt;br&gt;employment_status: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="faculty">
+          <mxGeometry y="26" width="250" height="201" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dept" value="department" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="450" width="250" height="107" as="geometry"/>
+        </mxCell>
+        <mxCell id="dept_a" value="department_id: INT [PK]&lt;br&gt;department_name: VARCHAR&lt;br&gt;department_code: VARCHAR&lt;br&gt;head_of_department_id: INT [FK]&lt;br&gt;office_location: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="dept">
+          <mxGeometry y="26" width="250" height="81" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="admin" value="admin" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="450" width="250" height="167" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_a" value="admin_id: INT [PK]&lt;br&gt;person_id: INT [FK]&lt;br&gt;department_id: INT [FK]&lt;br&gt;office_or_department: VARCHAR&lt;br&gt;role_or_position: VARCHAR&lt;br&gt;access_level: VARCHAR&lt;br&gt;employment_type: VARCHAR&lt;br&gt;employment_date: DATE&lt;br&gt;employment_status: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="admin">
+          <mxGeometry y="26" width="250" height="141" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fee" value="fee" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="250" height="152" as="geometry"/>
+        </mxCell>
+        <mxCell id="fee_a" value="fee_id: INT [PK]&lt;br&gt;student_id: INT [FK]&lt;br&gt;semester_id: INT [FK]&lt;br&gt;fee_type: VARCHAR&lt;br&gt;amount_due: DECIMAL&lt;br&gt;amount_paid: DECIMAL&lt;br&gt;due_date: DATE&lt;br&gt;payment_status: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="fee">
+          <mxGeometry y="26" width="250" height="126" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sem" value="semester" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="340" y="800" width="250" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="sem_a" value="semester_id: INT [PK]&lt;br&gt;academic_year: VARCHAR&lt;br&gt;semester_name: VARCHAR&lt;br&gt;start_date: DATE&lt;br&gt;end_date: DATE&lt;br&gt;registration_deadline: DATE&lt;br&gt;is_current: BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="sem">
+          <mxGeometry y="26" width="250" height="111" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fc" value="faculty_course" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="640" y="800" width="250" height="77" as="geometry"/>
+        </mxCell>
+        <mxCell id="fc_a" value="faculty_id: INT [PK, FK]&lt;br&gt;course_id: INT [PK, FK]&lt;br&gt;semester_id: INT [PK, FK]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="fc">
+          <mxGeometry y="26" width="250" height="51" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="course" value="course" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="800" width="250" height="152" as="geometry"/>
+        </mxCell>
+        <mxCell id="course_a" value="course_id: INT [PK]&lt;br&gt;department_id: INT [FK]&lt;br&gt;course_code: VARCHAR&lt;br&gt;course_title: VARCHAR&lt;br&gt;credit_hours: INT&lt;br&gt;description: TEXT&lt;br&gt;academic_level: VARCHAR&lt;br&gt;is_active: BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="course">
+          <mxGeometry y="26" width="250" height="126" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pay" value="payment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="800" width="250" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="pay_a" value="payment_id: INT [PK]&lt;br&gt;fee_id: INT [FK]&lt;br&gt;admin_id: INT [FK]&lt;br&gt;amount: DECIMAL&lt;br&gt;payment_date: DATE&lt;br&gt;payment_method: VARCHAR&lt;br&gt;receipt_number: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="pay">
+          <mxGeometry y="26" width="250" height="111" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="grade" value="grade" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1100" width="250" height="167" as="geometry"/>
+        </mxCell>
+        <mxCell id="grade_a" value="grade_id: INT [PK]&lt;br&gt;enrollment_id: INT [FK]&lt;br&gt;faculty_id: INT [FK]&lt;br&gt;continuous_assessment_score: DECIMAL&lt;br&gt;exam_score: DECIMAL&lt;br&gt;total_score: DECIMAL&lt;br&gt;letter_grade: VARCHAR&lt;br&gt;grade_point: DECIMAL&lt;br&gt;date_recorded: DATE" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="grade">
+          <mxGeometry y="26" width="250" height="141" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pc" value="program_course" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;collapsible=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="940" y="1100" width="250" height="92" as="geometry"/>
+        </mxCell>
+        <mxCell id="pc_a" value="program_id: INT [PK, FK]&lt;br&gt;course_id: INT [PK, FK]&lt;br&gt;course_type: VARCHAR&lt;br&gt;recommended_semester: INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="pc">
+          <mxGeometry y="26" width="250" height="66" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ RELATIONSHIPS (one side is the source, many side is the target) ============ -->
+
+        <!-- person to student, faculty, admin: one person has at most one role row -->
+        <mxCell id="r1" value="person_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToOne;endSize=10;exitX=0.1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="person" target="student">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2" value="person_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToOne;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="person" target="faculty">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3" value="person_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToOne;endSize=10;exitX=0.9;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="person" target="admin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- program 1 to many student -->
+        <mxCell id="r4" value="program_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="program" target="student">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="1065" y="15"/><mxPoint x="65" y="15"/></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- department 1 to many program -->
+        <mxCell id="r5" value="department_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="dept" target="program">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- department 1 to many faculty -->
+        <mxCell id="r6" value="department_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0;exitY=0.6;exitDx=0;exitDy=0;entryX=1;entryY=0.6;entryDx=0;entryDy=0;" edge="1" parent="1" source="dept" target="faculty">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- faculty heads department (head_of_department_id), zero or one each way -->
+        <mxCell id="r7" value="head_of_department_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERzeroToOne;startSize=10;endArrow=ERzeroToOne;endSize=10;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;" edge="1" parent="1" source="faculty" target="dept">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- department 1 to many admin -->
+        <mxCell id="r8" value="department_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dept" target="admin">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- department 1 to many course -->
+        <mxCell id="r9" value="department_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dept" target="course">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- student 1 to many enrollment -->
+        <mxCell id="r10" value="student_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="student" target="enr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- enrollment 1 to zero or one grade -->
+        <mxCell id="r11" value="enrollment_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToOne;endSize=10;exitX=0;exitY=0.9;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="enr" target="grade">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="315" y="560"/><mxPoint x="315" y="1150"/></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- course 1 to many enrollment (ON DELETE RESTRICT) -->
+        <mxCell id="r12" value="course_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.2;exitY=0;exitDx=0;exitDy=0;entryX=0.85;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="course" target="enr">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="990" y="760"/><mxPoint x="552" y="760"/></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- semester 1 to many enrollment -->
+        <mxCell id="r13" value="semester_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="sem" target="enr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- student 1 to many fee -->
+        <mxCell id="r14" value="student_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="student" target="fee">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- semester 1 to many fee -->
+        <mxCell id="r15" value="semester_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="sem" target="fee">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- fee 1 to many payment -->
+        <mxCell id="r16" value="fee_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="fee" target="pay">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="165" y="1340"/><mxPoint x="1365" y="1340"/></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- admin 1 to many payment -->
+        <mxCell id="r17" value="admin_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin" target="pay">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- faculty 1 to many faculty_course -->
+        <mxCell id="r18" value="faculty_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="faculty" target="fc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- course 1 to many faculty_course -->
+        <mxCell id="r19" value="course_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="course" target="fc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- semester 1 to many faculty_course -->
+        <mxCell id="r20" value="semester_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="sem" target="fc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- faculty 1 to many grade -->
+        <mxCell id="r21" value="faculty_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0;exitY=0.9;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="faculty" target="grade">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="615" y="654"/><mxPoint x="615" y="1183"/></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- program 1 to many program_course -->
+        <mxCell id="r22" value="program_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="program" target="pc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="1215" y="108"/><mxPoint x="1215" y="1146"/></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- course 1 to many program_course -->
+        <mxCell id="r23" value="course_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;labelBackgroundColor=#ffffff;startArrow=ERmandOne;startSize=10;endArrow=ERzeroToMany;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="course" target="pc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

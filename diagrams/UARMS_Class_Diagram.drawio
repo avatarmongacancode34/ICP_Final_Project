@@ -1,0 +1,445 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="uarms-class" name="UARMS Class Diagram">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="&lt;b&gt;UARMS - Class Diagram&lt;/b&gt;&lt;br&gt;Hollow triangle = inheritance&lt;br&gt;Filled diamond = composition&lt;br&gt;Plain line = association&lt;br&gt;PK / FK = primary / foreign key&lt;br&gt;- private, + public" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="50" width="190" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Person (abstract) -->
+        <mxCell id="person" value="Person {abstract}" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="260" height="421" as="geometry"/>
+        </mxCell>
+        <mxCell id="person_a" value="- person_id: int [PK]&lt;br&gt;- title: string&lt;br&gt;- first_name: string&lt;br&gt;- middle_name: string&lt;br&gt;- last_name: string&lt;br&gt;- date_of_birth: date&lt;br&gt;- gender: string&lt;br&gt;- nationality: string&lt;br&gt;- email: string&lt;br&gt;- phone: string&lt;br&gt;- street_address: string&lt;br&gt;- digital_address: string&lt;br&gt;- city: string&lt;br&gt;- region: string&lt;br&gt;- country: string&lt;br&gt;- emergency_contact_name: string&lt;br&gt;- emergency_contact_phone: string&lt;br&gt;- username: string&lt;br&gt;- password_hash: string&lt;br&gt;- user_role: string&lt;br&gt;- account_status: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="person">
+          <mxGeometry y="26" width="260" height="321" as="geometry"/>
+        </mxCell>
+        <mxCell id="person_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="person">
+          <mxGeometry y="347" width="260" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="person_m" value="+ getRole(): string {abstract}&lt;br&gt;+ displayMenu(): void {abstract}&lt;br&gt;+ verifyPassword(pw): bool&lt;br&gt;+ getFullName(): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="person">
+          <mxGeometry y="355" width="260" height="66" as="geometry"/>
+        </mxCell>
+
+        <!-- Student -->
+        <mxCell id="student" value="Student" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="250" height="286" as="geometry"/>
+        </mxCell>
+        <mxCell id="student_a" value="- student_id: int [PK]&lt;br&gt;- person_id: int [FK]&lt;br&gt;- program_id: int [FK]&lt;br&gt;- admission_date: date&lt;br&gt;- expected_graduation_year: int&lt;br&gt;- academic_level: string&lt;br&gt;- enrollment_status: string&lt;br&gt;- previous_school: string&lt;br&gt;- entry_qualification: string&lt;br&gt;- guardian_name: string&lt;br&gt;- guardian_phone: string&lt;br&gt;- financial_aid_status: string&lt;br&gt;- cgpa: decimal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="student">
+          <mxGeometry y="26" width="250" height="201" as="geometry"/>
+        </mxCell>
+        <mxCell id="student_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="student">
+          <mxGeometry y="227" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="student_m" value="+ getRole(): string&lt;br&gt;+ registerCourse(course): bool&lt;br&gt;+ viewTranscript(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="student">
+          <mxGeometry y="235" width="250" height="51" as="geometry"/>
+        </mxCell>
+
+        <!-- Enrollment -->
+        <mxCell id="enr" value="Enrollment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="340" y="520" width="250" height="151" as="geometry"/>
+        </mxCell>
+        <mxCell id="enr_a" value="- enrollment_id: int [PK]&lt;br&gt;- student_id: int [FK]&lt;br&gt;- course_id: int [FK]&lt;br&gt;- semester_id: int [FK]&lt;br&gt;- enrollment_date: date&lt;br&gt;- enrollment_status: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="enr">
+          <mxGeometry y="26" width="250" height="96" as="geometry"/>
+        </mxCell>
+        <mxCell id="enr_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="enr">
+          <mxGeometry y="122" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="enr_m" value="+ drop(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="enr">
+          <mxGeometry y="130" width="250" height="21" as="geometry"/>
+        </mxCell>
+
+        <!-- Faculty -->
+        <mxCell id="faculty" value="Faculty" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="640" y="520" width="250" height="286" as="geometry"/>
+        </mxCell>
+        <mxCell id="faculty_a" value="- faculty_id: int [PK]&lt;br&gt;- person_id: int [FK]&lt;br&gt;- department_id: int [FK]&lt;br&gt;- academic_rank: string&lt;br&gt;- specialization: string&lt;br&gt;- employment_type: string&lt;br&gt;- employment_date: date&lt;br&gt;- date_available: date&lt;br&gt;- years_of_experience: int&lt;br&gt;- highest_education: string&lt;br&gt;- university_attended: string&lt;br&gt;- office_location: string&lt;br&gt;- employment_status: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="faculty">
+          <mxGeometry y="26" width="250" height="201" as="geometry"/>
+        </mxCell>
+        <mxCell id="faculty_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="faculty">
+          <mxGeometry y="227" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="faculty_m" value="+ getRole(): string&lt;br&gt;+ assignGrade(enrollment): bool&lt;br&gt;+ viewAssignedCourses(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="faculty">
+          <mxGeometry y="235" width="250" height="51" as="geometry"/>
+        </mxCell>
+
+        <!-- Department -->
+        <mxCell id="dept" value="Department" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="940" y="520" width="250" height="151" as="geometry"/>
+        </mxCell>
+        <mxCell id="dept_a" value="- department_id: int [PK]&lt;br&gt;- department_name: string&lt;br&gt;- department_code: string&lt;br&gt;- head_of_department_id: int [FK]&lt;br&gt;- office_location: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="dept">
+          <mxGeometry y="26" width="250" height="81" as="geometry"/>
+        </mxCell>
+        <mxCell id="dept_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="dept">
+          <mxGeometry y="107" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="dept_m" value="+ getCourses(): list&lt;br&gt;+ getFaculty(): list" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="dept">
+          <mxGeometry y="115" width="250" height="36" as="geometry"/>
+        </mxCell>
+
+        <!-- Admin -->
+        <mxCell id="admin" value="Admin" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="520" width="250" height="226" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_a" value="- admin_id: int [PK]&lt;br&gt;- person_id: int [FK]&lt;br&gt;- department_id: int [FK]&lt;br&gt;- office_or_department: string&lt;br&gt;- role_or_position: string&lt;br&gt;- access_level: string&lt;br&gt;- employment_type: string&lt;br&gt;- employment_date: date&lt;br&gt;- employment_status: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="admin">
+          <mxGeometry y="26" width="250" height="141" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="admin">
+          <mxGeometry y="167" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_m" value="+ getRole(): string&lt;br&gt;+ captureStudent(student): bool&lt;br&gt;+ generateTranscript(id): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="admin">
+          <mxGeometry y="175" width="250" height="51" as="geometry"/>
+        </mxCell>
+
+        <!-- Program -->
+        <mxCell id="program" value="Program" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="940" y="40" width="250" height="166" as="geometry"/>
+        </mxCell>
+        <mxCell id="program_a" value="- program_id: int [PK]&lt;br&gt;- department_id: int [FK]&lt;br&gt;- program_name: string&lt;br&gt;- program_code: string&lt;br&gt;- degree_type: string&lt;br&gt;- duration_years: int&lt;br&gt;- total_credits_required: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="program">
+          <mxGeometry y="26" width="250" height="111" as="geometry"/>
+        </mxCell>
+        <mxCell id="program_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="program">
+          <mxGeometry y="137" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="program_m" value="+ getCourses(): list" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="program">
+          <mxGeometry y="145" width="250" height="21" as="geometry"/>
+        </mxCell>
+
+        <!-- Fee -->
+        <mxCell id="fee" value="Fee" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="900" width="250" height="181" as="geometry"/>
+        </mxCell>
+        <mxCell id="fee_a" value="- fee_id: int [PK]&lt;br&gt;- student_id: int [FK]&lt;br&gt;- semester_id: int [FK]&lt;br&gt;- fee_type: string&lt;br&gt;- amount_due: decimal&lt;br&gt;- amount_paid: decimal&lt;br&gt;- due_date: date&lt;br&gt;- payment_status: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="fee">
+          <mxGeometry y="26" width="250" height="126" as="geometry"/>
+        </mxCell>
+        <mxCell id="fee_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="fee">
+          <mxGeometry y="152" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="fee_m" value="+ getBalance(): decimal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="fee">
+          <mxGeometry y="160" width="250" height="21" as="geometry"/>
+        </mxCell>
+
+        <!-- Semester -->
+        <mxCell id="sem" value="Semester" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="340" y="900" width="250" height="166" as="geometry"/>
+        </mxCell>
+        <mxCell id="sem_a" value="- semester_id: int [PK]&lt;br&gt;- academic_year: string&lt;br&gt;- semester_name: string&lt;br&gt;- start_date: date&lt;br&gt;- end_date: date&lt;br&gt;- registration_deadline: date&lt;br&gt;- is_current: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="sem">
+          <mxGeometry y="26" width="250" height="111" as="geometry"/>
+        </mxCell>
+        <mxCell id="sem_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="sem">
+          <mxGeometry y="137" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="sem_m" value="+ isRegistrationOpen(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="sem">
+          <mxGeometry y="145" width="250" height="21" as="geometry"/>
+        </mxCell>
+
+        <!-- Faculty_Course -->
+        <mxCell id="fc" value="Faculty_Course" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="640" y="900" width="250" height="77" as="geometry"/>
+        </mxCell>
+        <mxCell id="fc_a" value="- faculty_id: int [PK, FK]&lt;br&gt;- course_id: int [PK, FK]&lt;br&gt;- semester_id: int [PK, FK]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="fc">
+          <mxGeometry y="26" width="250" height="51" as="geometry"/>
+        </mxCell>
+
+        <!-- Course -->
+        <mxCell id="course" value="Course" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="940" y="900" width="250" height="181" as="geometry"/>
+        </mxCell>
+        <mxCell id="course_a" value="- course_id: int [PK]&lt;br&gt;- department_id: int [FK]&lt;br&gt;- course_code: string&lt;br&gt;- course_title: string&lt;br&gt;- credit_hours: int&lt;br&gt;- description: string&lt;br&gt;- academic_level: string&lt;br&gt;- is_active: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="course">
+          <mxGeometry y="26" width="250" height="126" as="geometry"/>
+        </mxCell>
+        <mxCell id="course_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="course">
+          <mxGeometry y="152" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="course_m" value="+ hasEnrollments(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="course">
+          <mxGeometry y="160" width="250" height="21" as="geometry"/>
+        </mxCell>
+
+        <!-- Payment -->
+        <mxCell id="pay" value="Payment" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="900" width="250" height="166" as="geometry"/>
+        </mxCell>
+        <mxCell id="pay_a" value="- payment_id: int [PK]&lt;br&gt;- fee_id: int [FK]&lt;br&gt;- admin_id: int [FK]&lt;br&gt;- amount: decimal&lt;br&gt;- payment_date: date&lt;br&gt;- payment_method: string&lt;br&gt;- receipt_number: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="pay">
+          <mxGeometry y="26" width="250" height="111" as="geometry"/>
+        </mxCell>
+        <mxCell id="pay_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pay">
+          <mxGeometry y="137" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="pay_m" value="+ generateReceipt(): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="pay">
+          <mxGeometry y="145" width="250" height="21" as="geometry"/>
+        </mxCell>
+
+        <!-- Grade -->
+        <mxCell id="grade" value="Grade" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1200" width="250" height="211" as="geometry"/>
+        </mxCell>
+        <mxCell id="grade_a" value="- grade_id: int [PK]&lt;br&gt;- enrollment_id: int [FK]&lt;br&gt;- faculty_id: int [FK]&lt;br&gt;- continuous_assessment_score: decimal&lt;br&gt;- exam_score: decimal&lt;br&gt;- total_score: decimal&lt;br&gt;- letter_grade: string&lt;br&gt;- grade_point: decimal&lt;br&gt;- date_recorded: date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="grade">
+          <mxGeometry y="26" width="250" height="141" as="geometry"/>
+        </mxCell>
+        <mxCell id="grade_s" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="grade">
+          <mxGeometry y="167" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="grade_m" value="+ calculateTotal(): decimal&lt;br&gt;+ computeLetterGrade(): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="grade">
+          <mxGeometry y="175" width="250" height="36" as="geometry"/>
+        </mxCell>
+
+        <!-- Program_Course -->
+        <mxCell id="pc" value="Program_Course" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="940" y="1200" width="250" height="92" as="geometry"/>
+        </mxCell>
+        <mxCell id="pc_a" value="- program_id: int [PK, FK]&lt;br&gt;- course_id: int [PK, FK]&lt;br&gt;- course_type: string&lt;br&gt;- recommended_semester: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" vertex="1" parent="pc">
+          <mxGeometry y="26" width="250" height="66" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ RELATIONSHIPS ============ -->
+
+        <!-- Inheritance: Student, Faculty, Admin extend Person -->
+        <mxCell id="g1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=12;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="student" target="person">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="g2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=12;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="faculty" target="person">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="g3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=12;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin" target="person">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Student 1 to 0..* Enrollment (composition) -->
+        <mxCell id="e1" value="registers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=14;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="student" target="enr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry x="-0.75" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e1b" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry x="0.75" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Enrollment 1 to 0..1 Grade (composition) -->
+        <mxCell id="e2" value="receives" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=14;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.9;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="enr" target="grade">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="315" y="656"/><mxPoint x="315" y="1263"/></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e2">
+          <mxGeometry x="-0.9" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e2b" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e2">
+          <mxGeometry x="0.9" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Student 1 to 0..* Fee (composition) -->
+        <mxCell id="e3" value="is charged" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=14;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="student" target="fee">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e3">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e3b" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e3">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint x="14" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Student * to 1 Program -->
+        <mxCell id="e4" value="studies" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="student" target="program">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="65" y="15"/><mxPoint x="1065" y="15"/></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e4">
+          <mxGeometry x="-0.95" relative="1" as="geometry"><mxPoint y="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e4b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e4">
+          <mxGeometry x="0.95" relative="1" as="geometry"><mxPoint y="10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Program * to 1 Department -->
+        <mxCell id="e5" value="offered by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="program" target="dept">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e5">
+          <mxGeometry x="-0.9" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e5b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e5">
+          <mxGeometry x="0.9" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Faculty * to 1 Department (works in) -->
+        <mxCell id="e6" value="works in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;" edge="1" parent="1" source="faculty" target="dept">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e6">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint y="10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e6b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e6">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint y="10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Department 0..1 to 1 Faculty (heads) -->
+        <mxCell id="e7" value="heads" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.15;exitDx=0;exitDy=0;entryX=1;entryY=0.15;entryDx=0;entryDy=0;" edge="1" parent="1" source="dept" target="faculty">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7a" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e7">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e7b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e7">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Admin * to 1 Department -->
+        <mxCell id="e8" value="works in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin" target="dept">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e8">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e8b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e8">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Course * to 1 Department -->
+        <mxCell id="e9" value="belongs to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="course" target="dept">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e9">
+          <mxGeometry x="-0.9" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e9b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e9">
+          <mxGeometry x="0.9" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Faculty 1 to * Faculty_Course -->
+        <mxCell id="e10" value="teaches" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="faculty" target="fc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e10">
+          <mxGeometry x="-0.7" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e10b" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e10">
+          <mxGeometry x="0.7" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Faculty_Course * to 1 Course -->
+        <mxCell id="e11" value="for" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="fc" target="course">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e11">
+          <mxGeometry x="-0.7" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e11b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e11">
+          <mxGeometry x="0.7" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Faculty_Course * to 1 Semester -->
+        <mxCell id="e12" value="in" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="fc" target="sem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e12">
+          <mxGeometry x="-0.7" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e12b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e12">
+          <mxGeometry x="0.7" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Enrollment * to 1 Semester -->
+        <mxCell id="e13" value="during" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="enr" target="sem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e13">
+          <mxGeometry x="-0.7" relative="1" as="geometry"><mxPoint x="-12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e13b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e13">
+          <mxGeometry x="0.7" relative="1" as="geometry"><mxPoint x="-12" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Enrollment * to 1 Course -->
+        <mxCell id="e14" value="is for" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="enr" target="course">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="552" y="860"/><mxPoint x="990" y="860"/></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e14">
+          <mxGeometry x="-0.9" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e14b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e14">
+          <mxGeometry x="0.9" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Faculty 1 to * Grade (assigns) -->
+        <mxCell id="e15" value="assigns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.9;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="faculty" target="grade">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="615" y="777"/><mxPoint x="615" y="1305"/></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e15">
+          <mxGeometry x="-0.95" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e15b" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e15">
+          <mxGeometry x="0.95" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Fee * to 1 Semester -->
+        <mxCell id="e16" value="billed for" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fee" target="sem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e16">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e16b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e16">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Fee 1 to 0..* Payment (composition) -->
+        <mxCell id="e17" value="is settled by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=diamondThin;startFill=1;startSize=14;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="fee" target="pay">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="165" y="1480"/><mxPoint x="1365" y="1480"/></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e17">
+          <mxGeometry x="-0.97" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e17b" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e17">
+          <mxGeometry x="0.97" relative="1" as="geometry"><mxPoint x="14" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Admin 1 to * Payment (records) -->
+        <mxCell id="e18" value="records" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin" target="pay">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e18a" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e18">
+          <mxGeometry x="-0.7" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e18b" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e18">
+          <mxGeometry x="0.7" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Program_Course * to 1 Course -->
+        <mxCell id="e19" value="links" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="pc" target="course">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e19a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e19">
+          <mxGeometry x="-0.7" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e19b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e19">
+          <mxGeometry x="0.7" relative="1" as="geometry"><mxPoint x="12" as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Program_Course * to 1 Program -->
+        <mxCell id="e20" value="links" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pc" target="program">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="1215" y="1246"/><mxPoint x="1215" y="123"/></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e20a" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e20">
+          <mxGeometry x="-0.95" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="e20b" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="e20">
+          <mxGeometry x="0.95" relative="1" as="geometry"><mxPoint y="-10" as="offset"/></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
